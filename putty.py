@@ -70,7 +70,7 @@ class SSHClient(QWidget):
         if not port or not username or not password or not hostname:
             ok = QMessageBox.information(self,"Options Error","Please check Credentials again!",QMessageBox.Ok)
             if ok:
-                pass
+                return ""
         try:
             ssh = paramiko.SSHClient()
             ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())

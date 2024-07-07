@@ -10,7 +10,7 @@ class SSHClient(QWidget):
     def initUI(self):
         self.setWindowTitle('PuTTY')
 
-        self.ip_label = QLabel('Hostname:')
+        self.ip_label = QLabel('Hostname (or IP address):')
         self.ip_input = QLineEdit()
 
         self.port_label = QLabel('Port:')

@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton, QTextEdit, QMessageBox
 import paramiko
 
-class SSHClient(QWidget):
+class PuTTy(QWidget):
     def __init__(self):
         super().__init__()
         self.initUI()
@@ -19,7 +19,7 @@ class SSHClient(QWidget):
 
         self.user_label = QLabel('Username:')
         self.user_input = QLineEdit()
-
+        
         self.pass_label = QLabel('Password:')
         self.pass_input = QLineEdit()
         self.pass_input.setEchoMode(QLineEdit.Password)
@@ -93,5 +93,5 @@ class SSHClient(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = SSHClient()
+    ex = PuTTy()
     sys.exit(app.exec_())

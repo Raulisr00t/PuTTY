@@ -10,8 +10,8 @@ class SSHClient(QWidget):
     def initUI(self):
         self.setWindowTitle('PuTTY')
 
-        self.host_label = QLabel('Hostname:')
-        self.host_input = QLineEdit()
+        self.ip_label = QLabel('Hostname:')
+        self.ip_input = QLineEdit()
 
         self.port_label = QLabel('Port:')
         self.port_input = QLineEdit()
@@ -36,8 +36,8 @@ class SSHClient(QWidget):
 
         vbox = QVBoxLayout()
         hbox1 = QHBoxLayout()
-        hbox1.addWidget(self.host_label)
-        hbox1.addWidget(self.host_input)
+        hbox1.addWidget(self.ip_label)
+        hbox1.addWidget(self.ip_input)
         hbox1.addWidget(self.port_label)
         hbox1.addWidget(self.port_input)
         vbox.addLayout(hbox1)
@@ -62,19 +62,19 @@ class SSHClient(QWidget):
         self.show()
 
     def connectSSH(self):
-        hostname = self.host_input.text()
+        ip = self.ip_input.text()
         port = int(self.port_input.text())
         username = self.user_input.text()
         password = self.pass_input.text()
 
-        if not port or not username or not password or not hostname:
+        if not port or not username or not password or not ip:
             ok = QMessageBox.information(self,"Options Error","Please check Credentials again!",QMessageBox.Ok)
             if ok:
                 return ""
         try:
             ssh = paramiko.SSHClient()
             ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            ssh.connect(hostname, port, username, password)
+            ssh.connect(ip, port, username, password)
             command = self.cmd_input.text()
 
             stdin, stdout, stderr = ssh.exec_command(command)
